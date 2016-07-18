@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>FullPage.js_page1</title>
+    <link rel="stylesheet" href="css/fullPage.css"/>
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.10.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery.fullPage.min.js"></script>
+    <style>
+        .section { text-align: center; font: 50px "Microsoft Yahei"; color: #fff;}
+    </style>
+    <script>
+        $(document).ready(function() {
+            $.fn.fullpage({
+                slidesColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90'],//设置背景颜色
+                anchors: ['page11111', 'page2222', 'page3333', 'page4444'],//定义锚链接（url后面的链接）
+                resize:true,//字体是否随着窗口缩放而缩放
+                verticalCentered:true,//内容是否垂直居中
+                scrollingSpeed:700,//滚动速度
+                navigation:true,//是否显示项目导航
+                navigationPosition:'left',//项目导航的位置，可选 left 或 right
+                afterLoad:function(anchorLink,index){
+                    if(index==2){
+                        //console.log('到第二屏了！');
+                    }else if(anchorLink=='page3333'){
+                        //console.log('到第三屏了！');
+                    }
+                },//滚动到第几屏的时候的回调函数。
+                onLeave:function(index,nextIndex,direction){
+                    if(index==1){
+                        console.log('我要离开第一屏了。。。');
+                    }else if(nextIndex==1) {
+                        console.log('我要离开第二屏了。。。');
+                    }else if(nextIndex==3 && direction=='up'){
+                        console.log('我在第三个屏我要向上滚动');
+                    }
+                }//滚动前的回调函数
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="fullpage">
+        <div class="section">第一屏</div>
+        <div class="section">第二屏</div>
+        <div class="section">
+            <div class="slide">第三屏的第一屏</div>
+            <div class="slide">第三屏的第二屏</div>
+            <div class="slide">第三屏的第三屏</div>
+            <div class="slide">第三屏的第四屏</div>
+        </div>
+        <div class="section">第四屏</div>
+    </div>
+
+</body>
+</html>
